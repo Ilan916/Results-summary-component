@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Results summary component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+
+    * {
+      margin: 0;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .attribution { 
+      font-size: 11px; 
+      text-align: center;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translate(-50%);  
+    }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    .card_container {
+      max-width: 700px;
+      width: 100%;
+      height: 450px;
+      margin: auto;
+      background-color: #ffff;
+      border-radius: 30px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+    }
+
+    .card_global { 
+      grid-area: 1 / 1 / 2 / 3;
+      background: rgb(102,66,254);
+      background: linear-gradient(180deg, rgba(102,66,254,1) 0%, rgba(49,44,234,1) 100%);
+      border-radius: 30px; 
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 40px;
+    }
+
+    .card_global h1 {
+      color: #cdc4ff;
+    }
+
+    .card_details{ 
+      grid-area: 1 / 3 / 2 / 5;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 30px;
+    }
+
+    .card_details h1 {
+      color: #303b59;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .details_box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: calc(100% - 30px);
+        border-radius: 5px;
+        padding: 15px 15px;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    .icon-box {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .icon-box p {
+      margin-left: 8px;
+    }
+
+    #text-1 {
+      color: #ff5555;
+    }
+
+    #text-2 {
+      color: #ffb321;
+    }
+
+    #text-3{
+      color: #00bb8f;
+    }
+
+    #text-4 {
+      color: #1125d6;
+    }
+
+    #box-1 {
+      background-color: #fff6f5;
+    }
+
+    #box-2 {
+      background-color: #fffbf2;
+    }
+
+    #box-3 {
+      background-color: #f2fbfa;
+    }
+
+    #box-4 {
+      background-color: #f3f3fd;
+    }
+
+    .current_note {
+      color: #303b59;
+      font-weight: bold;
+    }
+
+    .details_note {
+      color: #8d969e;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 30px;
+      padding: 15px 0;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffff;
+      background-color: #303b59;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .button:hover {
+      background: rgb(102,66,254);
+      background: linear-gradient(180deg, rgba(102,66,254,1) 0%, rgba(49,44,234,1) 100%);
+      transition: .3s;
+    }
+
+    .global_text {
+      text-align: center;
+    }
+
+    .rounded_score {
+      width: 175px;
+      height:  175px;
+      background: rgb(76,35,202);
+      background: linear-gradient(180deg, rgba(76,35,202,1) 0%, rgba(71,52,238,1) 100%); 
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    .rounded_score p {
+      position: absolute;
+      bottom: 30px;
+      color: #cdc4ff;
+    }
+
+    .rounded_score h1 {
+      font-size : 60px;
+      color: #ffff; 
+    }
+
+    .card_global h2 {
+      color: #ffff;
+      margin-bottom: 20px;
+    }
+
+    .global_text {
+      color: #cdc4ff;
+      width: 230px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card_container">
+    <div class="card_global">
+      <h1>Your result</h1>
+      <div class="rounded_score">
+        <h1>76</h1>
+        <p>of 100</p>
+      </div>
+      <h2>Great</h2>
+      <p class="global_text">Yous scored higher than 65% of the people who have taken these test</p>
+    </div>
+
+    <div class="card_details">
+      <h1>Summary</h1>
+      <div class="details_content">
+        <div class="details_box" id="box-1">
+          <div class="icon-box">
+            <img src="./assets/images/icon-reaction.svg" alt="icon-reaction">
+            <p class="details_text" id="text-1"></p>
+          </div>
+          <p class="details_note"><span class="current_note" id="note-1"></span> / 100</p>
+        </div>
+        <div class="details_box" id="box-2">
+          <div class="icon-box">
+            <img src="./assets/images/icon-memory.svg" alt="icon-reaction">
+            <p class="details_text" id="text-2"></p>
+          </div>
+          <p class="details_note"><span class="current_note" id="note-2"></span> / 100</p>
+        </div>
+        <div class="details_box" id="box-3">
+          <div class="icon-box">
+            <img src="./assets/images/icon-verbal.svg" alt="icon-reaction">
+            <p class="details_text" id="text-3"></p>
+          </div>
+          <p class="details_note"><span class="current_note" id="note-3"></span> / 100</p>
+        </div>
+        <div class="details_box" id="box-4">
+          <div class="icon-box">
+            <img src="./assets/images/icon-visual.svg" alt="icon-reaction">
+            <p class="details_text" id="text-4"></p>
+          </div>
+          <p class="details_note"><span class="current_note" id="note-4"></span> / 100</p>
+        </div>
+
+        <button class="button">Continue</button>
+
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Ilan Lallemand</a>.
+  </div>
+
+  <script>
+ fetch('./data.json')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+
+    function detailOne (data) {
+      document.querySelector('#note-1').innerHTML = data[0].score
+      document.querySelector('#text-1').innerHTML = data[0].category
+    }
+
+    function detailTwo (data) {
+      document.querySelector('#note-2').innerHTML = data[1].score
+      document.querySelector('#text-2').innerHTML = data[1].category
+    }
+
+    function detailThree (data) {
+      document.querySelector('#note-3').innerHTML = data[2].score
+      document.querySelector('#text-3').innerHTML = data[2].category
+    }
+
+    function detailFour (data) {
+      document.querySelector('#note-4').innerHTML = data[3].score
+      document.querySelector('#text-4').innerHTML = data[3].category
+    }
+
+    function appendData(data) {
+      console.log(data)
+      detailOne(data)
+      detailTwo(data)
+      detailThree(data)
+      detailFour(data)
+    }
+
+  </script>
+</body>
+</html>
